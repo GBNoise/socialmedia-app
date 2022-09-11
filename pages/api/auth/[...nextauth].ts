@@ -27,6 +27,9 @@ export default NextAuth({
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     jwt: async ({ token, user }) => {
       delete token.picture;
