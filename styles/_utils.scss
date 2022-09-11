@@ -1,0 +1,26 @@
+@mixin adjust-size {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-justify($j) {
+  @include flex-center;
+  justify-content: $j;
+}
+
+@mixin flex-align($a) {
+  @include flex-center;
+  align-items: $a;
+}
+
+@mixin flex-center-col {
+  @include flex-center;
+  flex-direction: column;
+}

@@ -1,8 +1,32 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.scss";
+import type { AppProps } from "next/app";
+import Nav from "../components/Nav";
+import Sidebar from "../components/Sidebar";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { NO_SIDEBAR_ROUTES } from "../constants";
+import AuthContext from "../contexts/authContext";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }, []);
+
+  const router = useRouter();
+  const { pathname } = router;
+
+  return (
+    <SessionProvider>
+      <AuthContext>
+        <Nav />
+        <main>
+          {NO_SIDEBAR_ROUTES.includes(pathname) || <Sidebar />}
+          <Component {...pageProps} />
+        </main>
+      </AuthContext>
+    </SessionProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

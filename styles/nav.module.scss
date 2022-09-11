@@ -1,0 +1,95 @@
+@import "utils";
+@import "vars";
+
+.nav {
+  width: 100%;
+  height: $navHeight;
+  @include flex-justify(space-around);
+  border-bottom: 1px solid $shadowBg;
+  position: fixed;
+  background: var(--bg);
+  z-index: 9999;
+  ul {
+    @include adjust-size;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    @include flex-justify(space-between);
+
+    & > * {
+      @include flex-center;
+      height: 100%;
+    }
+
+    .logoContainer {
+      width: 200px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .searchContainer {
+      width: 400px;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        background: $shadowBg;
+        border-radius: 20px;
+        padding: 10px;
+        color: var(--fontColor);
+      }
+    }
+
+    .authContainer {
+      width: 250px;
+
+      @include flex-center;
+    }
+
+    .authContainer[data-auth="notauthenticated"] {
+      & > * {
+        transition: all 0.2s ease-out;
+      }
+
+      & > :first-child {
+        margin-right: 5px;
+        background: none;
+
+        &:hover {
+          background: $shadowBg;
+        }
+      }
+      & > :nth-child(2) {
+        margin-left: 5px;
+        background: $pinkAccent;
+        color: #fff;
+
+        &:hover {
+          color: $shadowBg;
+        }
+      }
+
+      a {
+        height: 90%;
+        width: 80px;
+        border-radius: 10px;
+        @include flex-center;
+      }
+    }
+
+    .authContainer[data-auth="authenticated"] {
+      span {
+        @include flex-center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: red;
+      }
+      p {
+        margin-left: 10px;
+      }
+    }
+  }
+}

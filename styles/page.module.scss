@@ -1,0 +1,10 @@
+@import "utils";
+@import "vars";
+
+.page {
+  flex-basis: calc(100% - #{$sidebarWidth});
+  min-height: calc(100vh - #{$navHeight});
+  @include adjust-size;
+  padding: 20px;
+  background: $darkAccent;
+}

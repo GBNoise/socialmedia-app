@@ -1,0 +1,66 @@
+@import "utils";
+@import "vars";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: JetBrains Mono, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  color: var(--fontColor);
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+main {
+  display: flex;
+  @include adjust-size;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+:root {
+  --bg: #{$bg};
+  --fontColor: #{$fontColor};
+  --shadowBg: #{$shadowBg};
+}
+
+[data-theme="dark"] {
+  --bg: #{$dkBg};
+  --fontColor: #{$dkFontColor};
+}
+
+/* 
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
