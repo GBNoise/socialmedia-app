@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Page from "../components/Page";
 import styles from "../styles/auth.module.scss";
 import Link from "next/link";
@@ -13,6 +13,7 @@ import {
 import { faMailForward } from "@fortawesome/free-solid-svg-icons";
 import { signIn } from "next-auth/react";
 import { useAxios } from "../hooks/useAxios";
+import { modalContext } from "../contexts/modalContext";
 
 declare type AuthOptionsType = {
   name: string;
@@ -124,6 +125,7 @@ const AuthOptions = () => {
 };
 
 const EmailForm = ({ setIsEmail }: any) => {
+  const { dispatch } = useContext(modalContext);
   const axios = useAxios();
   const router = useRouter();
   const { action } = router.query;
@@ -149,7 +151,18 @@ const EmailForm = ({ setIsEmail }: any) => {
     if (action === "login" || !action) {
       signIn("credentials", { ...fields, redirect: false }).then(
         ({ ok, error }: any) => {
-          if (ok) router.push("/");
+          if (ok) {
+            const message =
+              "You have logged in successfully, you will be redirected to the home page...";
+            dispatch({
+              type: "setMessage",
+              title: "Logged in successfully",
+              message,
+            });
+            setTimeout(() => {
+              router.push("/");
+            }, 5000);
+          }
           if (error) {
             console.log(error);
           }
@@ -161,11 +174,25 @@ const EmailForm = ({ setIsEmail }: any) => {
       await axios
         .post("/api/users", { user: fields })
         .then((response) => {
-          const { status: code, data: payload } = response;
-          if (code === 201) router.push("/auth?action=login");
+          const { status: statusCode, data: title } = response;
+          if (statusCode === 201) {
+            const message = "Your new account has been successfully created";
+            dispatch({ type: "setMessage", title, message, statusCode });
+            setTimeout(() => {
+              router.push("/auth?action=login");
+            }, 5000);
+          }
         })
         .catch((e) => {
-          const { status: code, data: payload } = e.response;
+          const { status: statusCode, data: title } = e.response;
+          const message =
+            "There has been an error while trying to create your account";
+          dispatch({
+            type: "setMessage",
+            title: JSON.stringify(title),
+            message,
+            statusCode,
+          });
         });
     }
 
