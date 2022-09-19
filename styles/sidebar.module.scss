@@ -7,12 +7,15 @@ $footerHeight: 100px;
   flex-basis: $sidebarWidth;
   width: $sidebarWidth;
   height: calc(100vh - #{$navHeight});
-  border-right: 1px solid $shadowBg;
+  border-right: 1px solid var(--borderColor);
   transition: transform, flex-basis 0.3s ease;
   position: fixed;
   top: $navHeight;
   background: var(--bg);
   z-index: 9999;
+  @include black-glass;
+  @include flex-center-col;
+  justify-content: flex-start;
 
   ul {
     list-style: none;
@@ -27,9 +30,14 @@ $footerHeight: 100px;
       height: 50px;
       width: 100%;
       @include flex-justify(center);
-      padding: 10px;
       cursor: pointer;
       user-select: none;
+
+      span {
+        @include flex-center;
+        height: 100%;
+        width: 100%;
+      }
 
       .icon {
         width: 20px !important;
@@ -71,5 +79,17 @@ $footerHeight: 100px;
     bottom: 0;
     @include flex-center;
     color: $shadowBg;
+  }
+
+  .newBtn {
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background: $pinkAccent;
+    margin-top: 100px;
+    transition: all 0.2s ease;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }

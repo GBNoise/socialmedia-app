@@ -1,7 +1,7 @@
 @import "utils";
 @import "vars";
 
-.postsContainer {
+.postsContainer[data-attr="ImagePost"] {
   max-width: 100%;
   min-height: 100%;
   columns: 250px auto;
@@ -63,6 +63,204 @@
     @keyframes appear {
       from {
         opacity: 0;
+      }
+    }
+  }
+}
+
+.postsContainer[data-attr="TextPost"] {
+  width: 70%;
+  @include border;
+  margin-top: 20px;
+  padding: 10px;
+  @include black-glass;
+  max-height: calc(100% - 270px);
+  overflow: scroll;
+  &,
+  & * {
+    border-radius: 10px;
+  }
+
+  & > :not(:first-child) {
+    margin-top: 20px;
+  }
+  .post {
+    width: 100%;
+    min-height: 100px;
+    @include border;
+    padding: 10px;
+    @include flex-justify(flex-start);
+    position: relative;
+
+    .info {
+      @include flex-justify(flex-start);
+      padding-bottom: 20px;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      padding-top: 20px;
+      .picture {
+        min-width: 40px;
+        height: 40px;
+        background: $pinkAccent;
+        border-radius: 50%;
+      }
+      .content {
+        margin-left: 20px;
+      }
+
+      .username {
+        position: absolute;
+        top: 0px;
+        left: 60px;
+        color: $pinkAccent;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .meta {
+        @include flex-center;
+        width: fit-content;
+        height: 15px;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        font-size: 1rem;
+        color: $shadowBg;
+      }
+
+      .interact {
+        width: fit-content;
+        position: absolute;
+        bottom: 0;
+        left: 60px;
+        height: 15px;
+        @include flex-center;
+        & * {
+          cursor: pointer;
+          color: $shadowBg;
+          transition: all 0.1s ease;
+          &[data-icon="heart"] {
+            & *:hover {
+              color: $pinkAccent;
+            }
+          }
+          &[data-icon="comment"] {
+            & *:hover {
+              color: $twitter;
+            }
+          }
+          &[data-icon="bookmark"] {
+            & *:hover {
+              color: gold;
+            }
+          }
+        }
+        & > :not(:first-child) {
+          margin-left: 10px;
+        }
+
+        p {
+          margin-left: 5px !important;
+        }
+
+        .liked[data-icon="heart"] {
+          &,
+          & * {
+            color: $pinkAccent;
+
+            &:hover {
+              color: $shadowBg;
+            }
+          }
+        }
+        .saved[data-icon="bookmark"] {
+          &,
+          & * {
+            color: gold;
+
+            &:hover {
+              color: $shadowBg;
+            }
+          }
+        }
+      }
+    }
+    .optionsBtn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      z-index: 9999;
+      width: 30px;
+      @include flex-justify(flex-start);
+      flex-direction: column;
+      height: 15px;
+      cursor: pointer;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 3px;
+        background: $shadowBg;
+        border-radius: 3px;
+      }
+
+      &::after,
+      &,
+      &::before {
+        transition: all 0.2s ease;
+      }
+
+      &::after {
+        margin-top: 7px;
+      }
+
+      &:hover {
+        &::after,
+        &::before {
+          background: $pinkAccent;
+        }
+      }
+    }
+    .options {
+      position: absolute;
+      width: fit-content;
+      height: 50px;
+      top: 5px;
+      user-select: none;
+      @include black-glass;
+      @include border;
+      right: 40px;
+      display: none;
+      z-index: 9998;
+      list-style-type: none;
+      padding: 5px;
+      flex-direction: column;
+      overflow: hidden;
+      animation: expand 0.1s forwards;
+      white-space: nowrap;
+      align-items: center;
+      justify-content: center;
+
+      @keyframes expand {
+        from {
+          width: 0;
+          opacity: 0;
+        }
+      }
+      li {
+        width: 30px;
+        cursor: pointer;
+        padding: 5px;
+        height: 100%;
+        @include flex-center;
+
+        &:hover {
+          background: $shadowBg;
+        }
       }
     }
   }

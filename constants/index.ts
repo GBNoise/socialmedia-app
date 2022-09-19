@@ -5,4 +5,9 @@ export const NAV_HEIGHT = "50px";
 export const SIDEBAR_WIDTH = "350px";
 
 // array which includes paths where sidebar won't be active
-export const NO_SIDEBAR_ROUTES = ["/auth"];
+export const NO_SIDEBAR_ROUTES = [
+  "/auth",
+  "/terms-of-service",
+  "/privacy-policy",
+  "/payment-policy",
+];

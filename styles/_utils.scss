@@ -24,3 +24,14 @@
   @include flex-center;
   flex-direction: column;
 }
+
+@mixin black-glass {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 8px 32px 0 rgba(#000, 1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+@mixin border {
+  border: solid 1px var(--borderColor);
+}

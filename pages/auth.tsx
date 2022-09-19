@@ -14,6 +14,7 @@ import { faMailForward } from "@fortawesome/free-solid-svg-icons";
 import { signIn } from "next-auth/react";
 import { useAxios } from "../hooks/useAxios";
 import { modalContext } from "../contexts/modalContext";
+import { authContext } from "../contexts/authContext";
 
 declare type AuthOptionsType = {
   name: string;
@@ -22,6 +23,13 @@ declare type AuthOptionsType = {
 };
 
 const Auth = () => {
+  const { session } = useContext(authContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) router.push("/");
+  }, []);
+
   return (
     <Page
       className={styles.authPageContainer}
@@ -172,7 +180,7 @@ const EmailForm = ({ setIsEmail }: any) => {
 
     if (action === "create") {
       await axios
-        .post("/api/users", { user: fields })
+        .post("/users", { user: fields })
         .then((response) => {
           const { status: statusCode, data: title } = response;
           if (statusCode === 201) {

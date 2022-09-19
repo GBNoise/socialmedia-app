@@ -1,0 +1,67 @@
+@import "vars";
+@import "utils";
+
+.newPost {
+  width: 70%;
+  height: 250px;
+  padding: 20px;
+  @include flex-justify(flex-start);
+  @include black-glass;
+  border-radius: 10px;
+  @include border;
+
+  .picture {
+    width: 70px;
+    height: 70px;
+    background: $pinkAccent;
+    border-radius: 50%;
+    display: flex;
+  }
+
+  .text {
+    width: 90%;
+    margin-left: 30px;
+    height: 80%;
+    resize: none;
+    border: none;
+    //   color: $fontColor;
+    padding: 10px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    @include border;
+    // background: $shadowBg;
+    @include black-glass;
+
+    &::placeholder {
+      color: $shadowBg;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  position: relative;
+  button {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    right: 20px;
+    bottom: 5px;
+    background: $pinkAccent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  p {
+    position: absolute;
+    left: 120px;
+    bottom: 5px;
+    width: 100px;
+    height: 30px;
+    @include flex-center;
+  }
+}

@@ -5,10 +5,12 @@
   width: 100%;
   height: $navHeight;
   @include flex-justify(space-around);
-  border-bottom: 1px solid $shadowBg;
+  border-bottom: 1px solid var(--borderColor);
   position: fixed;
   background: var(--bg);
   z-index: 9999;
+  user-select: none;
+  @include black-glass;
   ul {
     @include adjust-size;
     width: 100%;
@@ -80,7 +82,7 @@
     }
 
     .authContainer[data-auth="authenticated"] {
-      span {
+      .picture {
         @include flex-center;
         width: 35px;
         height: 35px;
@@ -89,6 +91,66 @@
       }
       p {
         margin-left: 10px;
+      }
+      .status {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: flex;
+        margin-left: 10px;
+      }
+      .status[data-status="online"] {
+        background: green;
+      }
+      .status[data-status="offline"] {
+        background: red;
+      }
+      .status[data-status="away"] {
+        background: orange;
+      }
+      position: relative;
+      .authOptions {
+        width: 300px;
+        height: 400px;
+        background: var(--bg);
+        position: absolute;
+        right: 0;
+        top: calc(#{$navHeight} + 0px);
+        @include border;
+        @include black-glass;
+        border-radius: 5px;
+        @include flex-center-col;
+        & > :not(:first-child) {
+          margin-top: 20px;
+        }
+
+        li {
+          width: 100%;
+          height: 40px;
+          border-radius: 10px;
+          cursor: pointer;
+          @include flex-justify(flex-start);
+          padding: 20px;
+          .icon {
+            max-width: 30px;
+          }
+
+          & * {
+            transition: all 0.2s ease;
+          }
+
+          p {
+            width: 100px;
+          }
+
+          &:hover {
+            background: $shadowBg;
+
+            & * {
+              color: $pinkAccent;
+            }
+          }
+        }
       }
     }
   }

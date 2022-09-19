@@ -1,0 +1,6 @@
+@import "utils";
+@import "vars";
+.home {
+  height: calc(100vh - #{$navHeight});
+  position: relative;
+}

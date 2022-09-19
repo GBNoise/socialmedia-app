@@ -4,8 +4,10 @@ generator client {
 
 datasource db {
     provider = "postgresql"
-    url = "postgresql://postgres:Lolito12@localhost:5432/letzie"
+    url = "postgresql://postgres@localhost:5432/letzie"
 }
+
+
 
 model User {
     id String @id @default(cuid())
@@ -14,12 +16,17 @@ model User {
     username String @db.VarChar(20) @unique
     password String @db.VarChar(255)
     email String @db.VarChar(255) @unique
+    emailVerified DateTime?
     roles RolesOnUser[]
     profile Profile?
-    posts Post[]
+    posts Post[] @relation("user posts")
     images Image[]
     accounts Account[]
     sessions Session[]
+    likedPosts Post[] @relation("user liked posts")
+    friends User[] @relation("friends")
+    friendsRelation User[] @relation("friends")
+    savedPosts Post[] @relation("saved posts")
 }
 
 model Account {
@@ -80,11 +87,13 @@ model Profile {
 model Post {
     id Int @id @default(autoincrement())
     ownerID String
-    owner User @relation(fields:[ownerID],references:[id])
+    owner User @relation("user posts",fields:[ownerID],references:[id])
     content String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     images Image[]
+    likedBy User[] @relation("user liked posts")
+    savedBy User[] @relation("saved posts")
 }
 
 model Image {
