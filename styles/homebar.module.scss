@@ -7,7 +7,9 @@
   position: absolute;
   right: 20px;
   top: 20px;
-  @include black-glass;
+  // @include black-glass;
+  background: black;
+
   @include border;
   padding: 20px;
 
@@ -22,6 +24,7 @@
     border-radius: 10px;
     @include border;
     padding: 10px;
+    @include flex-center-col;
     h4 {
       color: $shadowBg;
     }
@@ -113,7 +116,7 @@
       border-radius: 10px;
       background: none;
       font-size: 1rem;
-      @include black-glass;
+      // @include black-glass;
       transition: all 0.2s ease;
       &:hover {
         color: $shadowBg;
@@ -125,7 +128,7 @@
     height: 375px;
     width: 100%;
     @include border;
-    @include black-glass;
+    // @include black-glass;
     margin-top: 20px;
     padding: 20px;
 

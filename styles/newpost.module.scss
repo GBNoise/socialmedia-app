@@ -6,7 +6,8 @@
   height: 250px;
   padding: 20px;
   @include flex-justify(flex-start);
-  @include black-glass;
+  // @include black-glass;
+  background: black;
   border-radius: 10px;
   @include border;
 

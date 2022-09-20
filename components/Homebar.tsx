@@ -29,13 +29,22 @@ const Friends: React.FC<{ userID: string }> = ({ userID }) => {
     data: { friends: FriendsData[] };
     error: any;
   };
-  if (!data || data.friends.length === 0) return <Spinner />;
+  if (!data)
+    return (
+      <div className={styles.friends}>
+        <Spinner />
+      </div>
+    );
   if (error) return <h1>Error</h1>;
 
-  console.log(data);
   return (
     <div className={styles.friends}>
       <h4>Friends</h4>
+      {data.friends.length === 0 && (
+        <p>
+          Speaking of friends... <br /> You have no friends.
+        </p>
+      )}
       <ul className={styles.list}>
         {data.friends.length > 0 &&
           data.friends.map((friend, i) => {

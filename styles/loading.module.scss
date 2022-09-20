@@ -6,13 +6,15 @@
 }
 
 .spinner {
-  width: 200px;
-  height: 200px;
+  width: 80px;
+  height: 80px;
   background: var(--bg);
   border-radius: 50% !important;
   border-right: 5px solid $pinkAccent;
   border-top: 5px solid $pinkAccent;
-  animation: spin 0.7s linear infinite;
+  border-left: 5px solid var(--bg);
+  border-bottom: 5px solid var(--bg);
+  animation: spin 0.5s linear infinite;
   @keyframes spin {
     to {
       transform: rotate(360deg);
@@ -23,6 +25,7 @@
   display: flex;
   align-items: flex-end;
   font-size: 1.5rem;
+  display: none;
 
   p {
     animation: dot 0.7s linear infinite;

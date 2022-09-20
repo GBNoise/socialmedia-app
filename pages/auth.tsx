@@ -134,9 +134,10 @@ const AuthOptions = () => {
 
 const EmailForm = ({ setIsEmail }: any) => {
   const { dispatch } = useContext(modalContext);
-  const axios = useAxios();
+  const { instance: axios } = useAxios();
   const router = useRouter();
   const { action } = router.query;
+  const ref = useRef<HTMLFormElement>(null);
   const [fields, setFields] = useState({
     email: "",
     username: "",
@@ -144,7 +145,12 @@ const EmailForm = ({ setIsEmail }: any) => {
     repeat: "",
   });
   const handleHide = () => {
-    setIsEmail(false);
+    if (!ref.current) return;
+    ref.current.style.animation = "hideEmailForm .5s forwards";
+
+    setTimeout(() => {
+      setIsEmail(false);
+    }, 500);
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -213,7 +219,7 @@ const EmailForm = ({ setIsEmail }: any) => {
   };
 
   return (
-    <form className={styles.emailForm} onSubmit={handleSubmit}>
+    <form className={styles.emailForm} onSubmit={handleSubmit} ref={ref}>
       {action === "create" && (
         <label>
           Email

@@ -94,6 +94,10 @@ model Post {
     images Image[]
     likedBy User[] @relation("user liked posts")
     savedBy User[] @relation("saved posts")
+
+    ParentId Int? 
+    ParentPost Post? @relation("parentpost",fields:[ParentId], references:[id])
+    ChildPosts Post[] @relation("parentpost")
 }
 
 model Image {

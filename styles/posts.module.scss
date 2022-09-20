@@ -73,8 +73,9 @@
   @include border;
   margin-top: 20px;
   padding: 10px;
-  @include black-glass;
+  // @include black-glass;
   max-height: calc(100% - 270px);
+  background: black;
   overflow: scroll;
   &,
   & * {

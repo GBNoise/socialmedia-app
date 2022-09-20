@@ -1,0 +1,27 @@
+@import "vars";
+@import "utils";
+
+.videos {
+}
+
+.videosContainer {
+  width: fit-content;
+  padding: 10px;
+  max-height: calc(100vh - #{$navHeight} - 40px);
+  @include border;
+  border-radius: 10px;
+  background: black;
+  overflow-y: scroll;
+  @include flex-center-col;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  .video {
+    aspect-ratio: 9/16;
+    min-height: 830px;
+    border-radius: 10px;
+    object-fit: contain;
+    scroll-snap-align: center;
+    margin-top: 40px;
+  }
+}

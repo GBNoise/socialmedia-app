@@ -13,7 +13,7 @@ $footerHeight: 100px;
   top: $navHeight;
   background: var(--bg);
   z-index: 9999;
-  @include black-glass;
+  // @include black-glass;
   @include flex-center-col;
   justify-content: flex-start;
 

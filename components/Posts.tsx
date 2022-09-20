@@ -18,6 +18,7 @@ declare type PostsContainerProps = {
   size: "ImagePost" | "TextPost";
   data: ImagePostProps["data"][] | TextPostProps["data"][];
   mutate: KeyedMutator<any> | Function;
+  maxHeight?: string;
 };
 
 declare type ImagePostProps = {
@@ -70,6 +71,7 @@ export const PostsContainer: React.FC<PostsContainerProps> = ({
   size,
   data,
   mutate,
+  maxHeight,
 }) => {
   const { instance: axios } = useAxios();
   const { session } = useContext(authContext);
@@ -122,7 +124,11 @@ export const PostsContainer: React.FC<PostsContainerProps> = ({
   };
 
   return (
-    <div className={styles.postsContainer} data-attr={size}>
+    <div
+      className={styles.postsContainer}
+      data-attr={size}
+      style={{ maxHeight }}
+    >
       {size === "TextPost" ? renderTextPost() : renderImagePost()}
     </div>
   );
