@@ -6,7 +6,7 @@ import styles from "../styles/videos.module.scss";
 
 const Videos = () => {
   return (
-    <Page title={""} description={""} className={styles.videos}>
+    <Page title={"Videos"} description={"videos"} className={styles.videos}>
       <VideosContainer />
     </Page>
   );

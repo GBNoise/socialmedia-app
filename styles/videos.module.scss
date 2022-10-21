@@ -2,26 +2,56 @@
 @import "utils";
 
 .videos {
+  @include flex-center;
 }
 
 .videosContainer {
   width: fit-content;
-  padding: 10px;
+  padding: 20px;
   max-height: calc(100vh - #{$navHeight} - 40px);
-  @include border;
   border-radius: 10px;
-  background: black;
   overflow-y: scroll;
   @include flex-center-col;
   justify-content: flex-start;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  user-select: none;
   .video {
     aspect-ratio: 9/16;
     min-height: 830px;
     border-radius: 10px;
     object-fit: contain;
     scroll-snap-align: center;
+    margin-top: 40px;
+  }
+}
+
+.interactions {
+  height: 200px;
+  width: 50px;
+  @include flex-center-col;
+  margin-left: 20px;
+
+  span {
+    width: 100%;
+    @include flex-center-col;
+    .icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &,
+      & * {
+        color: $shadowBg;
+        transition: all 0.2s ease;
+        &:hover {
+          color: $pinkAccent;
+        }
+      }
+    }
+  }
+
+  & > :not(:first-child) {
     margin-top: 40px;
   }
 }

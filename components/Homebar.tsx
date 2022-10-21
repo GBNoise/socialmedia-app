@@ -5,6 +5,7 @@ import styles from "../styles/homebar.module.scss";
 import useSWR from "swr";
 import { Spinner } from "./Loading";
 import Link from "next/link";
+import { formatK } from "../constants";
 
 const Homebar = () => {
   const { session } = useContext(authContext);
@@ -116,11 +117,6 @@ const Trends = () => {
     { title: "Vinicius", postAmount: 12000 },
   ];
 
-  const format = useCallback((quantity: number) => {
-    if (quantity >= 1000) return `${quantity / 1000}k`;
-    return quantity;
-  }, []);
-
   return (
     <div className={styles.trends}>
       <h4>Trending Topics</h4>
@@ -131,7 +127,7 @@ const Trends = () => {
               <span>
                 <p className={styles.title}>{trend.title}</p>
                 <p className={styles.amount}>
-                  {format(Number(trend.postAmount))} posts
+                  {formatK(Number(trend.postAmount))} posts
                 </p>
               </span>
             </li>

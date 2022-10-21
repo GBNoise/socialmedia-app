@@ -14,7 +14,8 @@ export default async function handler(
       return getAll()
         .then((data) => res.status(200).send(data))
         .catch((e) => {
-          console.log(e);
+          console.log({ e });
+          return res.status(500).send(e);
         });
 
     case "POST":

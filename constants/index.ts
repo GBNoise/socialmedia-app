@@ -11,3 +11,8 @@ export const NO_SIDEBAR_ROUTES = [
   "/privacy-policy",
   "/payment-policy",
 ];
+
+export const formatK = (quantity: number) => {
+  if (quantity >= 1000) return `${quantity / 1000}k`;
+  return quantity;
+};
