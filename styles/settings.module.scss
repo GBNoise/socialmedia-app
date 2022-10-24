@@ -1,0 +1,79 @@
+@import 'vars';
+@import 'utils';
+
+.settingsContainer {
+  z-index:9999;
+  background:rgba($shadowBg,.1);
+  width:100%;
+  height:100vh;
+  position:fixed;
+  top: 0;
+  left: 0;
+  @include flex-center;
+
+  .settings {
+    width: 600px;
+    height: 700px;
+    background:var(--bg);
+    @include border;
+    border-radius: 10px;
+    padding: 10px;
+
+    .searchBox {
+      @include flex-justify(flex-start);
+      svg,path {
+        position:absolute;
+        width: 25px;
+        margin-left: 10px;
+      }
+      input[type="text"] {
+        width:100%;
+        height: 40px;
+        border-radius: 5px;
+        padding: 10px 10px 10px 45px;
+        background:$shadowBg;
+        font-size:$fontNm;
+      }
+    }
+
+    .settingsList {
+      width: 100%;
+      height:calc(100% - 40px);
+      @include flex-justify(flex-start);
+      flex-direction:column;
+      padding-top: 10px;
+      overflow:scroll;
+
+
+      li {
+        width:100%;
+        color: $shadowBg;
+        transition: all 100ms ease;
+        font-size: $fontNm;
+        text-transform: uppercase;
+        min-height:25px;
+        padding:3px;
+        border-radius: 3px;
+        @include flex-justify(flex-start);
+
+        p {
+          color:$shadowBg;
+          margin-left: 5px;
+        }
+
+        svg,path {
+          height:$fontNm;
+          color:$shadowBg;
+        }
+
+        &:hover {
+          background:$pinkAccent;
+
+          p,svg,path {
+            color:white;
+          }
+        }
+      }
+    }
+  }
+}

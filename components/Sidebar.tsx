@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import styles from "../styles/sidebar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,6 +7,7 @@ import {
   faHeadset,
   faHome,
   faImages,
+  faMessage,
   faToolbox,
   faTowerBroadcast,
   faVideo,
@@ -14,16 +15,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { settingsContext } from "../contexts/settings/settingsContext";
 
 declare type OptionsType = {
   name: string;
   icon: IconDefinition;
   to?: string;
+  cb?: Function;
 };
 
 const Sidebar = () => {
   const sidebarRef = useRef<HTMLElement>(null);
   const { pathname } = useRouter();
+  const { state, dispatch } = useContext(settingsContext);
 
   const options: OptionsType[] = [
     { name: "Home", icon: faHome, to: "/" },
@@ -31,12 +35,19 @@ const Sidebar = () => {
     { name: "Videos", icon: faVideo, to: "/videos" },
     { name: "Lives", icon: faTowerBroadcast, to: "/lives" },
     { name: "Rooms", icon: faHeadset, to: "/rooms" },
+    { name: "Chats", icon: faMessage, to: "/chats" },
   ];
 
   const settings: OptionsType[] = [
     { name: "Notifications", icon: faBell },
     { name: "Support", icon: faToolbox },
-    { name: "Settings", icon: faCog },
+    {
+      name: "Settings",
+      icon: faCog,
+      cb: () => {
+        dispatch({ type: "toggleIsActive" });
+      },
+    },
   ];
 
   const createBtn = {
@@ -45,6 +56,7 @@ const Sidebar = () => {
     "/videos": "Upload a new video",
     "/lives": "Start a live",
     "/rooms": "Create a new room",
+    "/chats": "Start a new chat",
   }[pathname];
 
   return (
@@ -53,7 +65,7 @@ const Sidebar = () => {
         <ul>
           {options.map(({ name, icon, to }) => {
             return (
-              <li>
+              <li key={name}>
                 <Link href={to || ""}>
                   <span>
                     <FontAwesomeIcon
@@ -70,9 +82,9 @@ const Sidebar = () => {
         </ul>
 
         <ul>
-          {settings.map(({ name, icon }) => {
+          {settings.map(({ name, icon, cb }) => {
             return (
-              <li>
+              <li key={name} onClick={() => (cb ? cb() : () => undefined)}>
                 <FontAwesomeIcon
                   icon={icon}
                   size="1x"

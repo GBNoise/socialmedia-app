@@ -2,7 +2,9 @@ $navHeight: 50px;
 $sidebarWidth: 350px;
 
 // colors
-$pinkAccent: rgba(254, 44, 85, 1);
+//$pinkAccent: rgba(254, 44, 85, 1);
+$pinkAccent: var(--accentColor);
+$accentColor:var(--accentColor);
 $bg: #fff;
 $fontColor: #0e0e0e;
 $shadowBg: rgba(222, 222, 222, 0.2);
@@ -16,3 +18,11 @@ $dkFontColor: #fff;
 $twitter: #00acee;
 $facebook: #3b5998;
 $google: #db4437;
+
+
+//font sizes
+$fontNm: 1.1rem;
+$fontSm: 0.8rem;
+$fontLg: 1.3rem;
+$fontXl: 1.5rem;
+$font2xl: 2rem;

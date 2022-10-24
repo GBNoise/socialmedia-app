@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import { authContext } from "../contexts/authContext";
 
 interface AuthProtectedRouteProps {
@@ -12,10 +12,10 @@ export const AuthProtectedRoute: React.FC<AuthProtectedRouteProps> = ({
   const { session, status } = useContext(authContext);
   const router = useRouter();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (status === "loading") return;
     if (status === "unauthenticated") router.push("/auth?action=login");
-  }, [status]);
+  }, [status, router]);
 
   return session ? <>{children}</> : <></>;
 };

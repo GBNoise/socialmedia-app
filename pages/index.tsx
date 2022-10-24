@@ -9,9 +9,12 @@ import useSWR from "swr";
 import { useAxios } from "../hooks/useAxios";
 import { Loading } from "../components/Loading";
 import Homebar from "../components/Homebar";
+import { useHotkeys } from "../hooks/useHotkeys";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const { instance: axios, fetcher } = useAxios();
+  const router = useRouter();
 
   const { data, mutate, error } = useSWR("/posts", fetcher, {
     refreshInterval: 1000,

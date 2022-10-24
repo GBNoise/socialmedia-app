@@ -34,6 +34,9 @@ input {
   &:focus {
     outline: none;
   }
+  &::placeholder{
+    user-select:none;
+  }
 }
 
 main {
@@ -52,9 +55,10 @@ button {
   --shadowBg: #{$shadowBg};
   --pinkAccent: #{$pinkAccent};
   --borderColor: #{$shadowBg};
+  --accentColor: #{$pinkAccent};
 }
 
-[data-theme="dark"] {
+[data-theme="#000"] {
   --bg: #{$dkBg};
   --fontColor: #{$dkFontColor};
 }

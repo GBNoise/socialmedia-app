@@ -1,15 +1,11 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { Modal } from "../components/Modal";
+import { ProviderValue } from "../constants/types";
 
 interface ModalContextState {
   title: string;
   message?: string;
   statusCode?: number | string | null;
-}
-
-interface ProviderValue {
-  state: ModalContextState;
-  dispatch: React.Dispatch<any>;
 }
 
 export const modalContext = createContext({} as ProviderValue);

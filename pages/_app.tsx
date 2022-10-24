@@ -8,27 +8,29 @@ import { NO_SIDEBAR_ROUTES } from "../constants";
 import AuthContext from "../contexts/authContext";
 import { SessionProvider } from "next-auth/react";
 import { ModalProvider } from "../contexts/modalContext";
+import { SettingsProvider } from "../contexts/settings/settingsContext";
+import { HotkeysProvider } from "../contexts/hotkeysContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-  }, []);
-
   const router = useRouter();
   const { pathname } = router;
 
   return (
-    <ModalProvider>
-      <SessionProvider>
-        <AuthContext>
-          <Nav />
-          <main>
-            {NO_SIDEBAR_ROUTES.includes(pathname) || <Sidebar />}
-            <Component {...pageProps} />
-          </main>
-        </AuthContext>
-      </SessionProvider>
-    </ModalProvider>
+    <HotkeysProvider>
+      <SettingsProvider>
+        <ModalProvider>
+          <SessionProvider>
+            <AuthContext>
+              <Nav />
+              <main>
+                {NO_SIDEBAR_ROUTES.includes(pathname) || <Sidebar />}
+                <Component {...pageProps} />
+              </main>
+            </AuthContext>
+          </SessionProvider>
+        </ModalProvider>
+      </SettingsProvider>
+    </HotkeysProvider>
   );
 }
 

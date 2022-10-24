@@ -1,3 +1,5 @@
+@import 'vars';
+
 @mixin adjust-size {
   max-width: 1920px;
   margin-left: auto;
@@ -34,4 +36,22 @@
 
 @mixin border {
   border: solid 1px var(--borderColor);
+}
+
+@mixin settingsBackIcon {
+  width: 30px;
+  position:absolute;
+  left: 10px;
+  top: 10px;
+  cursor:pointer;
+
+  & > * {
+    transition:color 100ms ease;
+  }
+
+  &:hover {
+    & > * {
+      color:$shadowBg;
+    }
+  }
 }
