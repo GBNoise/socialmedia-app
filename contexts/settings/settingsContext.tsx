@@ -1,4 +1,9 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useLayoutEffect,
+  useReducer,
+} from "react";
 import {
   CustomSettingsProviderValue,
   SettingsState,
@@ -6,6 +11,7 @@ import {
 import { SettingsContainer } from "../../components/settings";
 import { useHotkeys } from "../../hooks/useHotkeys";
 import { ColorSchemeProvider } from "./colorSchemeContext";
+import { getFromLocalStorage, saveToLocalStorage } from "../../constants";
 
 export const settingsContext = createContext({} as CustomSettingsProviderValue);
 
@@ -30,12 +36,15 @@ const reducer = (state: SettingsState, action: any) => {
       return { ...state, selectedSetting: "" };
 
     case "changeTheme":
+      saveToLocalStorage("theme", action.payload);
       return {
         ...state,
         colorScheme: { ...state.colorScheme, theme: action.payload },
       };
 
     case "changeAccentColor":
+      saveToLocalStorage("accentColor", action.payload);
+
       return {
         ...state,
         colorScheme: { ...state.colorScheme, accentColor: action.payload },

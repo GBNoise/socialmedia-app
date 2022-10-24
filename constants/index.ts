@@ -16,3 +16,13 @@ export const formatK = (quantity: number) => {
   if (quantity >= 1000) return `${quantity / 1000}k`;
   return quantity;
 };
+
+export const saveToLocalStorage = (name: string, value: string) => {
+  value = JSON.stringify(value);
+  localStorage.setItem(name, value);
+};
+
+export const getFromLocalStorage = (name: string) => {
+  const item = localStorage.getItem(name);
+  return item ? JSON.parse(item) : null;
+};
