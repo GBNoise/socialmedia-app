@@ -49,8 +49,6 @@ export const ColorSchemeProvider = ({ children }: Children) => {
     document.documentElement.style.setProperty("--accentColor", accentColor);
   }, [accentColor, changeAccentColor]);
 
-  useLayoutEffect(() => {}, []);
-
   return (
     <colorSchemeContext.Provider
       value={{ ...state.colorScheme, changeTheme, changeAccentColor }}

@@ -13,8 +13,6 @@ export const SettingsColorScheme = () => {
   const themes: Themes[] = [
     { name: "light", color: "#fff" },
     { name: "dark", color: "#000" },
-    { name: "blue", color: "#00f" },
-    { name: "green", color: "#0f0" },
     { name: "dracula", color: "#282a36" },
     { name: "gruvbox dark", color: "#282828" },
     { name: "gruvbox light", color: "#fbf1c7" },
@@ -22,7 +20,9 @@ export const SettingsColorScheme = () => {
 
   const accents: Themes[] = [
     { name: "pink accent", color: "rgba(254, 44, 85, 1)" },
+    { name: "dracula accent", color: "#bd93f9" },
     { name: "purple accent", color: "#7856FF" },
+    { name: "gruvbox dark accent", color: "#fb3944" },
     { name: "green accent", color: "#00BA7C" },
     { name: "yellow accent", color: "#FFD500" },
   ];

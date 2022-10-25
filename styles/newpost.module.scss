@@ -7,14 +7,14 @@
   padding: 20px;
   @include flex-justify(flex-start);
   // @include black-glass;
-  background: black;
+  background: $backgroundColor;
   border-radius: 10px;
   @include border;
 
   .picture {
     width: 70px;
     height: 70px;
-    background: $pinkAccent;
+    background: $accentColor;
     border-radius: 50%;
     display: flex;
   }
@@ -25,13 +25,12 @@
     height: 80%;
     resize: none;
     border: none;
-    //   color: $fontColor;
+    color: $fontColor;
     padding: 10px;
     font-size: 1.3rem;
     border-radius: 10px;
     @include border;
-    // background: $shadowBg;
-    @include black-glass;
+    background:$backgroundColor;
 
     &::placeholder {
       color: $shadowBg;
@@ -49,7 +48,7 @@
     border-radius: 5px;
     right: 20px;
     bottom: 5px;
-    background: $pinkAccent;
+    background: $accentColor;
     transition: all 0.2s ease;
 
     &:hover {

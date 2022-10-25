@@ -40,7 +40,7 @@
       }
 
       button {
-        background: $pinkAccent;
+        background: $accentColor;
         padding: 5px 10px 5px 10px;
         border-radius: 10px;
 
@@ -75,7 +75,7 @@
   padding: 10px;
   // @include black-glass;
   max-height: calc(100% - 270px);
-  background: black;
+  background:$backgroundColor;
   overflow: scroll;
   &,
   & * {
@@ -103,7 +103,7 @@
       .picture {
         min-width: 40px;
         height: 40px;
-        background: $pinkAccent;
+        background: $accentColor;
         border-radius: 50%;
       }
       .content {
@@ -222,7 +222,7 @@
       &:hover {
         &::after,
         &::before {
-          background: $pinkAccent;
+          background: $accentColor;
         }
       }
     }
@@ -232,7 +232,7 @@
       height: 50px;
       top: 5px;
       user-select: none;
-      @include black-glass;
+      background:$backgroundColor;
       @include border;
       right: 40px;
       display: none;

@@ -49,19 +49,46 @@ button {
   cursor: pointer;
 }
 
+// light theme
 :root {
   --bg: #{$bg};
-  --fontColor: #{$fontColor};
-  --shadowBg: #{$shadowBg};
+  --fontColor: #{$lightFontColor};
+  --shadowBg: #{$shadowBgLight};
   --pinkAccent: #{$pinkAccent};
-  --borderColor: #{$shadowBg};
+  --borderColor: #{$shadowBgLight};
   --accentColor: #{$pinkAccent};
+  --backgroundAccent: #{$darkAccent};
 }
 
+// dark theme
 [data-theme="#000"] {
   --bg: #{$dkBg};
   --fontColor: #{$dkFontColor};
+  --backgroundAccent:#{$darkAccent};
 }
+
+// dracula theme
+[data-theme="#282a36"] {
+  --bg: #{$draculaBg};
+  --fontColor:#{$draculaFontColor};
+  --shadowBg: #{$draculaAccent};
+  --backgroundAccent:#{$draculaAccent};
+}
+
+//gruvbox dark
+[data-theme="#282828"] {
+  --bg: #{$gruvboxDarkBg};
+  --fontColor:#{$gruvboxDarkFontColor};
+  --shadowBg:#{$gruvboxDarkShadowBg};
+  --backgroundAccent:#{$gruvboxDarkShadowBg};
+}
+
+//gruvbox light
+[data-theme="#fbf1c7"] {
+  --bg: #{$gruvboxLightBg};
+}
+
+
 
 ul {
   list-style: none;

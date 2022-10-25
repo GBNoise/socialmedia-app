@@ -7,10 +7,10 @@
   @include flex-justify(space-around);
   border-bottom: 1px solid var(--borderColor);
   position: fixed;
-  background: var(--bg);
+  background: $backgroundColor;
   z-index: 9999;
   user-select: none;
-  @include black-glass;
+
   ul {
     @include adjust-size;
     width: 100%;
@@ -65,7 +65,7 @@
       }
       & > :nth-child(2) {
         margin-left: 5px;
-        background: $pinkAccent;
+        background: $accentColor;
         color: #fff;
 
         &:hover {
@@ -112,12 +112,11 @@
       .authOptions {
         width: 300px;
         height: 400px;
-        background: var(--bg);
+        background:$backgroundColor;
         position: absolute;
         right: 0;
         top: calc(#{$navHeight} + 0px);
         @include border;
-        @include black-glass;
         border-radius: 5px;
         @include flex-center-col;
         & > :not(:first-child) {
