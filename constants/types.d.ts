@@ -41,3 +41,11 @@ export interface SettingsState {
 export interface CustomSettingsProviderValue extends ProviderValue {
   goBack: Function;
 }
+
+// lives
+
+// livesList
+export interface LivesListProps {
+  title: string;
+  endpoint?: string;
+}
