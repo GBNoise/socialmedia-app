@@ -1,0 +1,77 @@
+@import "vars";
+@import "utils";
+
+.livesContainer {
+  overflow: hidden;
+
+  .livesHeader {
+    width: 100%;
+    height: 400px;
+    @include flex-center;
+
+    .mainLive {
+      width: 80%;
+      height: 100%;
+      @include border;
+    }
+  }
+
+  .livesList {
+    width: 100%;
+    height: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    @include flex-justify(space-between);
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    .livesListTitle {
+      text-transform: uppercase;
+      height: 2rem;
+      font-size: 2rem;
+    }
+
+    .livesUl {
+      height: 83%;
+      @include flex-justify(flex-start);
+      width: 100%;
+      overflow: auto;
+      & > :not(:first-child) {
+        margin-left: 20px;
+      }
+
+      li {
+        height: 100%;
+        .liveThumbnail {
+          width: 350px;
+          height: 100%;
+          @include border;
+          transition: border 200ms ease;
+          cursor: default;
+          &:hover {
+            border: solid 1px $accentColor;
+          }
+
+          .thumbnail {
+            width: 100%;
+            height: 70%;
+            background: $accentColor;
+          }
+
+          .liveInfo {
+            width: 100%;
+            height: 30%;
+            padding: 10px;
+            display: block;
+
+            a {
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
