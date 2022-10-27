@@ -13,7 +13,7 @@
     cursor: pointer;
     margin-top: 40px;
     box-shadow: 10px 10px 10px 10px rgba(#000, 0.4);
-    border: solid 1px $shadowBg;
+    @include border;
     display: flex;
 
     &,

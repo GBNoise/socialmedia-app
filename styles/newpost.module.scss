@@ -33,7 +33,7 @@
     background:$backgroundColor;
 
     &::placeholder {
-      color: $shadowBg;
+      color: $backgroundAccent;
     }
 
     &:focus {
