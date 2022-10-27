@@ -71,7 +71,7 @@ button {
 [data-theme="#282a36"] {
   --bg: #{$draculaBg};
   --fontColor:#{$draculaFontColor};
-  --shadowBg: #{$draculaAccent};
+  --shadowBg: #{$draculaShadowBg};
   --backgroundAccent:#{$draculaAccent};
 }
 
@@ -79,7 +79,7 @@ button {
 [data-theme="#282828"] {
   --bg: #{$gruvboxDarkBg};
   --fontColor:#{$gruvboxDarkFontColor};
-  --shadowBg:#{$gruvboxDarkShadowBg};
+  --shadowBg:#{$gruvboxDarkAccent};
   --backgroundAccent:#{$gruvboxDarkShadowBg};
 }
 
