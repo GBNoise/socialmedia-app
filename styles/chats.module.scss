@@ -1,13 +1,15 @@
-@import 'vars';
-@import 'utils';
+@import "vars";
+@import "utils";
 
-$chatSidebarWidth:350px;
+$chatSidebarWidth: 350px;
 $chatWidth: calc(100% - #{$chatSidebarWidth});
 $sidebarHeaderHeight: 60px;
 $chatListHeight: calc(100% - #{$sidebarHeaderHeight});
-$headerItemsRadius:5px;
+$headerItemsRadius: 5px;
 $inputContainerHeight: 60px;
-$chatMessagesHeight: calc(100% - #{$inputContainerHeight} - #{$sidebarHeaderHeight});
+$chatMessagesHeight: calc(
+  100% - #{$inputContainerHeight} - #{$sidebarHeaderHeight}
+);
 $maxHeight: 800px;
 
 .chatsContainer {
@@ -15,174 +17,176 @@ $maxHeight: 800px;
     width: 100%;
     height: 100%;
     max-height: 1000px;
-    border-radius:10px;
+    border-radius: 10px;
     @include border;
-    position:relative;
-    display:flex;
+    position: relative;
+    display: flex;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     .chatsSidebar {
       width: $chatSidebarWidth;
       border-right: inherit;
-      padding:inherit;
+      padding: inherit;
       @include flex-justify(flex-start);
       flex-direction: column;
-      overflow:hidden;
-      background:var(--bg);
-      border-radius:inherit;
+      overflow: hidden;
+      background: var(--bg);
+      border-radius: inherit;
       .sidebarHeader {
-        width:100%;
-        height:$sidebarHeaderHeight;
-        border-bottom:1px solid $shadowBg;
+        width: 100%;
+        height: $sidebarHeaderHeight;
+        border-bottom: 1px solid $shadowBg;
         @include flex-center;
         .searchIcon {
-          background:$shadowBg;
-          height:55%;
-          padding:5px;
+          background: $shadowBg;
+          height: 55%;
+          padding: 5px;
           border-top-left-radius: $headerItemsRadius;
           border-bottom-left-radius: $headerItemsRadius;
-          cursor:pointer;
+          cursor: pointer;
         }
-        input[type='text'] {
-          width:80%;
+        input[type="text"] {
+          width: 80%;
           height: 55%;
-          padding:5px;
+          padding: 5px;
           border-top-right-radius: $headerItemsRadius;
           border-bottom-right-radius: $headerItemsRadius;
-          background:$shadowBg;
+          background: $shadowBg;
         }
       }
 
       .chatsList {
         @include flex-justify(flex-start);
-        flex-direction:column;
-        width:100%;
+        flex-direction: column;
+        width: 100%;
         height: $chatListHeight;
-        max-height:$maxHeight;
-        padding-top:10px;
-        overflow:scroll;
+        max-height: $maxHeight;
+        padding-top: 10px;
+        overflow: scroll;
         li {
-          width:100%;
+          width: 100%;
           height: 70px;
-          transition:background 150ms ease;
-          border-bottom: 1px solid rgba($shadowBg, .1);
-          padding:50px 10px 50px 10px;
-          display:flex;
+          transition: background 150ms ease;
+          border-bottom: 1px solid rgba($shadowBg, 0.1);
+          padding: 50px 10px 50px 10px;
+          display: flex;
           @include flex-justify(flex-start);
           &:hover {
-            background:$shadowBg;
+            background: $shadowBg;
           }
           .chatImage {
             width: 60px;
-            height:60px;
-            border-radius:50%;
+            height: 60px;
+            border-radius: 50%;
             border: 1px solid $pinkAccent;
           }
 
           p {
-            margin-left:20px;
+            margin-left: 20px;
           }
         }
       }
     }
 
     .chat {
-      width:$chatWidth;
-      height:100%;
+      width: $chatWidth;
+      height: 100%;
       @include flex-center;
-      border-radius:inherit;
+      border-radius: inherit;
       .iconsContainer {
         & > * {
-          cursor:pointer;
+          cursor: pointer;
           width: 25px;
           path {
             transition: color 150ms ease;
           }
           &:hover {
             path {
-              color:$pinkAccent;
+              color: $pinkAccent;
             }
           }
         }
 
-        & >:not(:first-child) {
-          margin-left:10px;
+        & > :not(:first-child) {
+          margin-left: 10px;
         }
-
       }
     }
 
     .chat[data-attr="active"] {
-      background:var(--bg);
+      background: var(--bg);
       @include flex-justify(space-between);
-      flex-direction:column;
+      flex-direction: column;
       .chatHeader {
-        width:100%;
-        height:$sidebarHeaderHeight;
-        border-radius:inherit;
+        width: 100%;
+        height: $sidebarHeaderHeight;
+        border-radius: inherit;
         border: 1px solid $shadowBg;
         @include flex-justify(flex-start);
-        padding:10px;
-        position:relative;
-        .chatHeaderImg{
-          display:flex;
-          width:45px;
-          height:45px;
-          border-radius:50%;
+        padding: 10px;
+        position: relative;
+        .chatHeaderImg {
+          display: flex;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
           border: 1px solid $pinkAccent;
         }
 
         .chatMeta {
           margin-left: 10px;
           .chatName {
-            font-size:1.1rem;
+            font-size: 1.1rem;
           }
           .chatStatus {
-            font-size:.8rem;
-            color:$shadowBg;
+            font-size: 0.8rem;
+            color: $shadowBg;
           }
         }
 
         .chatHeaderIcons {
-          position:absolute;
+          position: absolute;
           right: 20px;
         }
       }
       .chatMessages {
-        width:100%;
-        height:$chatMessagesHeight;
-        max-height: calc(#{$maxHeight} - #{$sidebarHeaderHeight} - #{$inputContainerHeight});
-        padding:20px;
-        overflow:scroll;
-        & >:not(:first-child) {
-          margin-top:50px;
+        width: 100%;
+        height: $chatMessagesHeight;
+        max-height: calc(
+          #{$maxHeight} - #{$sidebarHeaderHeight} - #{$inputContainerHeight}
+        );
+        padding: 20px;
+        overflow: scroll;
+        & > :not(:first-child) {
+          margin-top: 50px;
         }
 
         .chatMessage {
-          background:red;
-          width:340px;
-          padding:5px;
-          border-radius:$headerItemsRadius;
+          background: red;
+          width: 340px;
+          padding: 5px;
+          border-radius: $headerItemsRadius;
           cursor: auto;
-          position:relative;
+          position: relative;
+          word-wrap: break-word;
           .content {
-            font-size:1.1rem;
+            font-size: 1.1rem;
           }
           .sender {
-            color:$shadowBg;
-            position:absolute;
-            top:-25px;
+            color: $shadowBg;
+            position: absolute;
+            top: -25px;
           }
           .sentAt {
-            position:absolute;
-            margin-top:5px;
+            position: absolute;
+            margin-top: 5px;
             right: 0;
-            color:$shadowBg;
+            color: $shadowBg;
           }
         }
 
         .chatMessage[data-attr="sender"] {
-          background:$pinkAccent;
+          background: $pinkAccent;
           margin-left: calc(100% - 340px);
         }
         .chatMessage[data-attr="receiver"] {
@@ -190,21 +194,21 @@ $maxHeight: 800px;
         }
       }
       .inputContainer {
-        width:100%;
+        width: 100%;
         height: $inputContainerHeight;
-        background:var(--bg);
+        background: var(--bg);
         border-top: solid 1px $shadowBg;
         @include flex-justify(space-around);
         input[type="text"] {
           width: 80%;
           height: 65%;
-          padding:10px;
-          border-radius:5px;
-          background:$shadowBg;
-          font-size:1.1rem;
+          padding: 10px;
+          border-radius: 5px;
+          background: $shadowBg;
+          font-size: 1.1rem;
         }
         button[type="submit"] {
-          background:none;
+          background: none;
         }
       }
     }
