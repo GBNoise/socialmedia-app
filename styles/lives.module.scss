@@ -1,6 +1,8 @@
 @import "vars";
 @import "utils";
 
+$ulHeight: 83%;
+
 .livesContainer {
   overflow: hidden;
 
@@ -25,6 +27,29 @@
     flex-direction: column;
     align-items: flex-start;
     overflow: hidden;
+    position: relative;
+
+    .listController {
+      position: absolute;
+      height: $ulHeight;
+      bottom: 0;
+      width: 40px;
+      background: rgba(0, 0, 0, 0.3);
+
+      path,
+      svg {
+        width: 20px;
+      }
+
+      &:hover {
+        background: $backgroundColor;
+      }
+    }
+
+    .listController:nth-of-type(1) {
+      right: 0;
+    }
+
     .livesListTitle {
       text-transform: uppercase;
       height: 2rem;
@@ -32,10 +57,12 @@
     }
 
     .livesUl {
-      height: 83%;
+      height: $ulHeight;
       @include flex-justify(flex-start);
       width: 100%;
       overflow: auto;
+      padding-left: 50px;
+      padding-right: 50px;
       & > :not(:first-child) {
         margin-left: 20px;
       }
