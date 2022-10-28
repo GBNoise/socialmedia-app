@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useLayoutEffect, useEffect } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { chatContext, Messages } from "../../contexts/chatContext";
 import styles from "../../styles/chats.module.scss";
 import { authContext } from "../../contexts/authContext";
@@ -12,7 +12,7 @@ export const ChatMessages = () => {
 
   const ulRef = useRef<HTMLUListElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!ulRef.current) return;
     ulRef.current.scrollTop = ulRef.current.scrollHeight;
   }, [ulRef, messages]);

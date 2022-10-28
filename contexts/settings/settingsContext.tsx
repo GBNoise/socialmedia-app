@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useEffect,
-  useLayoutEffect,
-  useReducer,
-} from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import {
   CustomSettingsProviderValue,
   SettingsState,
