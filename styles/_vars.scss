@@ -5,13 +5,14 @@ $backgroundColor: var(--bg);
 $shadowBg: var(--shadowBg);
 $backgroundAccent: var(--backgroundAccent);
 $fontColor: var(--fontColor);
+$white: #fff;
 
 // colors
 //$pinkAccent: rgba(254, 44, 85, 1);
 $pinkAccent: var(--accentColor);
-$accentColor:var(--accentColor);
+$accentColor: var(--accentColor);
 $bg: #fff;
-$lightFontColor:#0e0e0e;
+$lightFontColor: #0e0e0e;
 $shadowBgLight: rgba(222, 222, 222, 0.2);
 $darkAccent: #0e0e0e;
 
@@ -20,13 +21,13 @@ $dkBg: #000;
 $dkFontColor: #fff;
 
 // dracula theme color variations
-$draculaBg:#282a36;
+$draculaBg: #282a36;
 $draculaFontColor: #fff;
-$draculaAccent:#44475a;
+$draculaAccent: #44475a;
 $draculaShadowBg: #282a36;
 
 // gruvbox dark color variations
-$gruvboxDarkBg:#282828;
+$gruvboxDarkBg: #282828;
 $gruvboxDarkFontColor: #928374;
 $gruvboxDarkShadowBg: #32302f;
 $gruvboxDarkAccent: #3c3836;
@@ -38,7 +39,6 @@ $gruvboxLightBg: #fbf1c7;
 $twitter: #00acee;
 $facebook: #3b5998;
 $google: #db4437;
-
 
 //font sizes
 $fontNm: 1.1rem;
