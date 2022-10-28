@@ -1,7 +1,7 @@
 import React from "react";
-import { LivesContainer } from "../components/lives/LivesContainer";
-import Page from "../components/Page";
-import styles from "../styles/lives.module.scss";
+import { LivesContainer } from "../../components/lives/LivesContainer";
+import Page from "../../components/Page";
+import styles from "../../styles/lives.module.scss";
 const Lives = () => {
   return (
     <Page
