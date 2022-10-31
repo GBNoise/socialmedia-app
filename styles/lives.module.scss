@@ -108,6 +108,32 @@ $ulHeight: 83%;
     width: 100%;
     height: 600px;
     border: solid 1px $accentColor;
+    @include flex-center;
+    position: relative;
+    video {
+      object-fit: contain;
+      height: 598px;
+    }
+
+    .livePlayerController {
+      @include flex-justify(flex-start);
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+
+      button {
+        background: none;
+        margin-left: 10px;
+        svg,
+        path {
+          width: 30px;
+          background: none;
+          color: $accentColor;
+        }
+      }
+    }
   }
 
   .livePlayerInfo {
@@ -122,7 +148,6 @@ $ulHeight: 83%;
     .livePlayerMetaData {
       width: 100%;
       @include flex-justify(space-between);
-      border-bottom: 1px solid $accentColor;
     }
     .livePlayerStreamerMetaData {
       width: 100%;
