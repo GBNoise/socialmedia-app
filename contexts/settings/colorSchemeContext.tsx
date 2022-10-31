@@ -2,7 +2,6 @@ import React, {
   useContext,
   createContext,
   useEffect,
-  useLayoutEffect,
   useCallback,
 } from "react";
 import { settingsContext } from "./settingsContext";
@@ -37,13 +36,13 @@ export const ColorSchemeProvider = ({ children }: Children) => {
     [dispatch]
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let savedTheme = getFromLocalStorage("theme");
     if (savedTheme) changeTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme, changeTheme]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let savedAccent = getFromLocalStorage("accentColor");
     if (savedAccent) changeAccentColor(savedAccent);
     document.documentElement.style.setProperty("--accentColor", accentColor);
