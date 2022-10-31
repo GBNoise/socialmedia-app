@@ -102,3 +102,31 @@ $ulHeight: 83%;
     }
   }
 }
+
+.singleLive {
+  .livePlayer {
+    width: 100%;
+    height: 600px;
+    border: solid 1px $accentColor;
+  }
+
+  .livePlayerInfo {
+    @include flex-center-col;
+    align-items: flex-start;
+    border: solid 1px $accentColor;
+    border-top: none;
+    background: $backgroundColor;
+    & > * {
+      padding: 10px;
+    }
+    .livePlayerMetaData {
+      width: 100%;
+      @include flex-justify(space-between);
+      border-bottom: 1px solid $accentColor;
+    }
+    .livePlayerStreamerMetaData {
+      width: 100%;
+      height: 500px;
+    }
+  }
+}
