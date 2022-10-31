@@ -9,6 +9,7 @@ export const LivesList: React.FC<LivesListProps> = ({
   endpoint,
 }): JSX.Element => {
   const listRef = useRef<HTMLUListElement>(null);
+  const livesMockup = new Array(20).fill(0);
 
   const handleScroll = (action?: "left" | "right") => {
     if (!listRef.current) return;
@@ -39,33 +40,13 @@ export const LivesList: React.FC<LivesListProps> = ({
         <ArrowLeftIcon />
       </button>
       <ul className={styles.livesUl} ref={listRef}>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
-        <li>
-          <LiveThumbnail />
-        </li>
+        {livesMockup.map((live, index) => {
+          return (
+            <li key={index}>
+              <LiveThumbnail id={index} />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
