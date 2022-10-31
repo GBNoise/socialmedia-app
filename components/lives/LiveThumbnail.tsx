@@ -2,9 +2,9 @@ import React from "react";
 import styles from "../../styles/lives.module.scss";
 import Link from "next/link";
 
-export const LiveThumbnail = () => {
+export const LiveThumbnail = ({ id }: { id: string | number }) => {
   return (
-    <Link href="/somewhere">
+    <Link href={`/lives/${id}`}>
       <div className={styles.liveThumbnail}>
         <div className={styles.thumbnail}></div>
         <span className={styles.liveInfo}>
