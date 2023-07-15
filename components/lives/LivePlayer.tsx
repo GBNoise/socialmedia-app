@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import React, { useRef } from "react";
 import styles from "../../styles/lives.module.scss";
+import { Hotlink } from "./StreamerHotlink";
 
 export const LivePlayer = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -49,7 +50,14 @@ export const LivePlayer = () => {
           <p>Streamer Username</p>
           <p>Live timeup</p>
         </span>
-        <span className={styles.livePlayerStreamerMetaData}></span>
+        <span className={styles.livePlayerStreamerMetaData}>
+          <Hotlink title={""} imgUrl={""} />
+          <Hotlink title={""} imgUrl={""} />
+          <Hotlink title={""} imgUrl={""} />
+          <Hotlink title={""} imgUrl={""} />
+          <Hotlink title={""} imgUrl={""} />
+          <Hotlink title={""} imgUrl={""} />
+        </span>
       </span>
     </>
   );

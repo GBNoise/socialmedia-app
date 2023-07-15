@@ -49,3 +49,8 @@ export interface LivesListProps {
   title: string;
   endpoint?: string;
 }
+
+export interface Hotlinkprops {
+  title: string;
+  imgUrl: string;
+}
